@@ -33,17 +33,39 @@
 
 
 #### User
-'''
-json
+'''json
 {
+"id":12,
 "username":"johnDoe0001",
 "email":"john@mail.com",
 "bio":"I am a software Developer",
-"avatar":"https://avatars.dicebear.com/v2/johndoe0001.png"
+"avatar":"https://avatars.dicebear.com/v2/johndoe0001.png",
+"createdAt":"2020-01-01T00:00:00:0007"
 }
 '''
 > NOTE : 'password' has to be hashed and stored too
 
 #### Article
-
+'''json 
+{
+"id":12,
+"heading":"My first blog post",
+"slug":"my-first-blog-post",
+"subheading":"This is my first blog post",
+"tags":["blog","first"],
+"content":"<p> This is my first blog post</p>",
+"authordId":12,
+"createdAt":"2020-01-01T00:00:00:0007"
+}
+'''
 #### Comment
+'''json
+{
+"id":17,
+"title":"My first comment",
+"body":"This is my first comment",
+"articleId":124,
+"authordId":42,
+"createdAt":"2020-01-01T00:00:00:0007"
+}
+'''
