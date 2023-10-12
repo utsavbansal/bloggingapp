@@ -143,6 +143,12 @@ update article by slug
 ##### 'DELETE /articles/{articles-slug}' (LoggedId)
 delete article by slug
 
+##### 'PUT /articles/{articles-slug}/like' (LoggedId)
+like article by slug
+
+##### 'DELETE /articles/{articles-slug}/like' (LoggedId)
+unlike article by slug
+
 ##### 'GET /articles/'  (Pagination)
 get all articles
 
