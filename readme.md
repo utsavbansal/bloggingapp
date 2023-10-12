@@ -1,6 +1,7 @@
 # Blogging App
 
 ## Features
+### Required
     - Users can signup to create accounts
         - Users have username, email, bio (text) , avatar (img url)
     - Users can login to their accounts
@@ -9,6 +10,9 @@
         - Assume reasonable length for heading, subheading, mo limit on body
         - Body content will be html
         - Tags are an array of Strings
+        - Users can delete articles they have created
+        - Users can update articles they have created
+        - Users can delete comments they have created
      - Users can comment on Blog articles
         -Comments will have a tittle and a body
         -Title is optional, but body is required
@@ -69,6 +73,93 @@
 "createdAt":"2020-01-01T00:00:00:0007"
 }
 '''
+#### Join Tables
+
+##### Follows
+'''json
+{
+"id":133,
+"followerId":12,
+"followeeId":42,
+"createdAt":"2020-01-01T00:00:00:0007"
+}
+'''
+
+##### Likes
+'''json
+{
+"id":524,
+"likerId":12,
+"articleId":142,
+"createdAt":"2020-01-01T00:00:00:0007"
+}
+'''
 ### Schema Diagram
 
 ![BloggerApp drawio](https://github.com/utsavbansal/bloggingapp/assets/16816167/00cc1ac4-af54-4713-a087-ce54796355c9)
+
+
+
+
+### API Endpoints
+
+#### Users
+
+##### 'POST /users'
+create a new user (signup)
+
+##### 'POST /users/login'
+login to an existing user (login)
+
+##### 'GET /users' (Pagination)
+list all users
+
+available query parameters :
+- '?sort=date' or '?sort=followers'
+- '?username=something' filter by username (i.e. username contains 'something')
+- '?follower=Kakarot' (LoggedIn)  users whom 'Kakarot' follows
+- '?following=Kakarot' (LoggedIn)  find all 'Kakarot' followers
+
+##### 'POST /users/login'
+login to an existing user (login)
+
+##### 'GET /users/{userid}'  (LoggedIn)
+get user profile by user id
+
+##### 'GET /users/@{username}' (LoggedIn)
+get user profile by username
+
+#### Articles
+
+##### 'POST /articles' (LoggedIn)
+create a new article
+
+##### 'GET /articles/{articles-slug}' (LoggedId)
+get article by slug
+
+##### 'PATCH /articles/{articles-slug}' (LoggedId)
+update article by slug
+
+##### 'DELETE /articles/{articles-slug}' (LoggedId)
+delete article by slug
+
+##### 'GET /articles/'  (Pagination)
+get all articles
+
+available query parameters:
+- '?following=true' (default: false) (LoggedIn): get articles of users that you are following
+- '?sort=date' (default) or '?sort=likes' : sort by date or likes
+- '?tags=startups,tech' : filter articles by tags
+- '?author=username' : filter articles by author
+- '?title=something' : search articles by title (i.e. title includes 'something')
+
+#### Comments
+
+##### 'POST /articles/{article-slug}/comments'  (LoggedIn)
+create a new comment on a given article
+
+##### 'POST /articles/{article-slug}/comments'  (Pagination)
+get all comments on a given article
+
+##### 'DELETE /articles/{article-slug}/comments/{comment-id}'  (LoggedIn)
+delete comment on a given article
