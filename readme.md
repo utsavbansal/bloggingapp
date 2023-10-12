@@ -70,3 +70,5 @@
 }
 '''
 ### Schema Diagram
+
+![BloggerApp drawio](https://github.com/utsavbansal/bloggingapp/assets/16816167/00cc1ac4-af54-4713-a087-ce54796355c9)
