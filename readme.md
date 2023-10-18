@@ -37,7 +37,8 @@
 
 
 #### User
-'''json
+
+```json
 {
 "id":12,
 "username":"johnDoe0001",
@@ -46,11 +47,11 @@
 "avatar":"https://avatars.dicebear.com/v2/johndoe0001.png",
 "createdAt":"2020-01-01T00:00:00:0007"
 }
-'''
+```
 > NOTE : 'password' has to be hashed and stored too
 
 #### Article
-'''json 
+```json 
 {
 "id":12,
 "heading":"My first blog post",
@@ -61,9 +62,9 @@
 "authordId":12,
 "createdAt":"2020-01-01T00:00:00:0007"
 }
-'''
+```
 #### Comment
-'''json
+```json
 {
 "id":17,
 "title":"My first comment",
@@ -72,28 +73,28 @@
 "authordId":42,
 "createdAt":"2020-01-01T00:00:00:0007"
 }
-'''
+```
 #### Join Tables
 
 ##### Follows
-'''json
+```json
 {
 "id":133,
 "followerId":12,
 "followeeId":42,
 "createdAt":"2020-01-01T00:00:00:0007"
 }
-'''
+```
 
 ##### Likes
-'''json
+```json
 {
 "id":524,
 "likerId":12,
 "articleId":142,
 "createdAt":"2020-01-01T00:00:00:0007"
 }
-'''
+```
 ### Schema Diagram
 
 ![BloggerApp drawio](https://github.com/utsavbansal/bloggingapp/assets/16816167/00cc1ac4-af54-4713-a087-ce54796355c9)
@@ -166,20 +167,21 @@ available query parameters:
 
 <details>
     <summary>Response</summary>
-    '''json
-    [
-        {
+    
+```json 
+[
+       {
         "id":12,
         "heading":"My first blog post",
         "slug":"my-first-blog-post",
         "subheading":"This is my first blog post",
-        "tags":["blog","first"],
-        "author":{
+        "tags" : ["blog","first"],
+        "author" : {
             "username":"kakarot",
             "avatar": "https://avatars.dicebear.com/v2/johndoe0001.png"
         },
         "createdAt":"2020-01-01T00:00:00:0007"
-        },
+        } ,
         {
         "id":42,
         "heading":"My first blog post",
@@ -193,7 +195,7 @@ available query parameters:
         "createdAt":"2020-01-01T00:00:00:0007"
         }
     ]
-    '''
+   ``` 
 </details>
 
 
