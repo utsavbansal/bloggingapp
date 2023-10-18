@@ -129,6 +129,11 @@ get user profile by user id
 ##### 'GET /users/@{username}' (LoggedIn)
 get user profile by username
 
+##### 'PUT /users/@{username}/follow' (LoggedIn)
+follow a user
+##### 'DELETE /users/@{username}/follow' (LoggedIn) (USER)
+unfollow a user
+
 #### Articles
 
 ##### 'POST /articles' (LoggedIn)
@@ -137,16 +142,16 @@ create a new article
 ##### 'GET /articles/{articles-slug}' (LoggedId)
 get article by slug
 
-##### 'PATCH /articles/{articles-slug}' (LoggedId)
+##### 'PATCH /articles/{articles-slug}' (LoggedId) (User)
 update article by slug
 
-##### 'DELETE /articles/{articles-slug}' (LoggedId)
+##### 'DELETE /articles/{articles-slug}' (LoggedId) (User)
 delete article by slug
 
-##### 'PUT /articles/{articles-slug}/like' (LoggedId)
+##### 'PUT /articles/{articles-slug}/like' (LoggedId) (User})
 like article by slug
 
-##### 'DELETE /articles/{articles-slug}/like' (LoggedId)
+##### 'DELETE /articles/{articles-slug}/like' (LoggedId) (User)
 unlike article by slug
 
 ##### 'GET /articles/'  (Pagination)
@@ -167,5 +172,5 @@ create a new comment on a given article
 ##### 'POST /articles/{article-slug}/comments'  (Pagination)
 get all comments on a given article
 
-##### 'DELETE /articles/{article-slug}/comments/{comment-id}'  (LoggedIn)
+##### 'DELETE /articles/{article-slug}/comments/{comment-id}'  (LoggedIn) (User)
 delete comment on a given article
