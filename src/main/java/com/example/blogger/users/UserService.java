@@ -11,8 +11,10 @@ import java.util.Optional;
 public class UserService {
         private  UsersRepository usersRepository;
         private ModelMapper modelMapper;
-        public UserService (@Autowired UsersRepository usersRepository,ModelMapper modelMapper)
+        private UserJwtService jwtService;
+        public UserService (@Autowired UsersRepository usersRepository,ModelMapper modelMapper,UserJwtService jwtService)
         {
+            this.jwtService=jwtService;
             this.modelMapper=modelMapper;
             this.usersRepository=usersRepository;
         }
@@ -22,10 +24,11 @@ public class UserService {
      */
     public UserDTO.LoginUserResponse signupUser(UserDTO.CreateUserRequest user)
     {
+        // todo : check for invalid inputs and non unique username/email
         UserEntity userEntity=modelMapper.map(user,UserEntity.class);
         UserEntity savedUser=usersRepository.save(userEntity);
         UserDTO.LoginUserResponse response=modelMapper.map(savedUser,UserDTO.LoginUserResponse.class);
-        response.setToken("token");// TODO generate token for logged in users
+        response.setToken(jwtService.createJwtToken(response.getUsername()));// TODO generate token for logged in users
         return response;
     }
 
@@ -54,7 +57,7 @@ public class UserService {
             if(userEntity.getPassword().equals(user.getPassword()))
             {
                 UserDTO.LoginUserResponse response=modelMapper.map(userEntity,UserDTO.LoginUserResponse.class);
-                response.setToken("token");// TODO generate token for logged in users
+                response.setToken(jwtService.createJwtToken(response.getUsername()));// TODO generate token for logged in users
                 return response;
             }
             else
