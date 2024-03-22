@@ -25,4 +25,11 @@ public class UserDTO {
         private String bio;
         private String token;
     }
+    @Data
+    public static class GetUserResponse{
+        private Integer id;
+        private String username;
+        private String bio;
+    }
+
 }

@@ -26,6 +26,15 @@ public class UsersController {
         var response=userService.loginUser(request);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/@{username}")
+    ResponseEntity<UserDTO.GetUserResponse> getUser(@PathVariable ("username") String username)
+    {
+        var response=userService.getUserByUsername(username);
+        return ResponseEntity.ok(response);
+
+
+    }
     @ExceptionHandler
     ResponseEntity<ErrorDTO> exceptionHandler(Exception e)
     {

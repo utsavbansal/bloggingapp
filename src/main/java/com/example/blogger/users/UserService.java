@@ -65,6 +65,14 @@ public class UserService {
                 throw new UserAuthenticationException();
             }
     }
+
+    public UserDTO.GetUserResponse getUserByUsername(String username){
+            UserEntity userEntity=usersRepository.findByUsername(username).orElseThrow(
+                    ()->new UserNotFoundException(username)
+            );
+            return modelMapper.map(userEntity,UserDTO.GetUserResponse.class);
+    }
+
     static class UserNotFoundException extends RuntimeException {
         public UserNotFoundException(String username)
         {
