@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.http.HttpResponse;
 import java.util.Optional;
 
 @Service
@@ -32,7 +33,7 @@ public class UserService {
      * Login user
      */
 
-    public  UserDTO.LoginUserResponse loginUser(UserDTO.CreateUserRequest user)
+    public  UserDTO.LoginUserResponse loginUser(UserDTO.LoginUserRequest user)
     {
             //Optional<UserEntity> savedUser=usersRepository.findByUsername(user.getUsername());
             /*
@@ -61,7 +62,7 @@ public class UserService {
                 throw new UserAuthenticationException();
             }
     }
-    static class UserNotFoundException extends RuntimeException{
+    static class UserNotFoundException extends RuntimeException {
         public UserNotFoundException(String username)
         {
             super("No user found with username "+username );
